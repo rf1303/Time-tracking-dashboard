@@ -1,0 +1,122 @@
+@use './reset';
+@use './variables' as *;
+@use './mixin' as *;
+@use './font-face' as *;
+
+@include fontFace('rubik', '../fonts/Rubik-VariableFont_wght.ttf', 300 900);
+
+.info-grid {
+  display: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+  font-family: rubik;
+  background-color: $navy-950-color;
+  display: grid;
+  justify-items: center;
+  padding: 8.1rem 2.4rem;
+  align-items: center;
+}
+
+.layout__mains {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.layout__user {
+  display: grid;
+  gap: 2.4rem;
+  background-color: $navy-900-color;
+  border-radius: 1.5rem;
+
+}
+
+.user__info {
+  background-color: $purple-600-color;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 3.2rem;
+  border-radius: 1.5rem;
+}
+
+.images__profile {
+  width: 6.4rem;
+  height: 6.4rem;
+}
+
+.user__timeframes {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2.4rem; 
+}
+
+.user__title {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: $white-color;
+}
+
+.user__subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: $navy-200-color;
+}
+
+.timeframes__item {
+  border: none;
+  background-color: $navy-900-color;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $purple-500-color;
+}
+
+.card__grids {
+  width: 100%;
+  max-height: 16rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.grids__images {
+  max-width: 7.8rem;
+  z-index: 1;
+}
+
+.grids__report {
+  display: grid;
+  grid-template-rows: auto;
+  background-color: $navy-900-color;
+  border-radius: 1.5rem;
+  padding: 2.4rem;
+  /* transform: translateY(-24%); */
+  z-index: 9;
+}
+
+.report__header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.report__numbers {
+  display: flex;
+  justify-content: space-between; 
+}
+.numbers__previous {
+  display: flex;
+}
+.card__grids--work {
+  background-color: $orange-300-color;
+}
+
+
+
