@@ -35,6 +35,7 @@ body {
   gap: 2.4rem;
   background-color: $navy-900-color;
   border-radius: 1.5rem;
+  box-shadow: 1px 1px 4px 3px rgba(14, 19, 15, .9);
 
 }
 
@@ -46,11 +47,14 @@ body {
   gap: 2.4rem;
   padding: 3.2rem;
   border-radius: 1.5rem;
+  box-shadow: 1px 1px 5px 3px rgba(14, 19, 35, .5);
 }
 
 .images__profile {
   width: 6.4rem;
   height: 6.4rem;
+  border-radius: 50%;
+  border: .3rem solid $navy-200-color;
 }
 
 .user__timeframes {
@@ -87,7 +91,6 @@ body {
   border-inline: 2px solid $navy-950-color;
   overflow-Y: hidden;
   box-shadow: 1px 1px 4px 3px rgba(14, 19, 15, .9);
-  margin-inline: -1px;
   z-index: 0; 
 }
 
@@ -97,7 +100,7 @@ body {
 }
 
 .images__icons {
-  width: 7.8rem;
+  width: min(7.8rem, 100%);
   position: absolute;
   top: -5%;
   right: 5%;
@@ -106,10 +109,10 @@ body {
 
 @keyframes reportGrid {
   from {
-    transform: translateY(80%);
+    transform: translateY(110%);
   }
   to {
-    transform: translateY(0%);
+    transform: translateY(31%);
   }
 }
 
@@ -123,20 +126,21 @@ body {
   height: 12.2rem;
   background-color: $navy-900-color;
   padding: 2.4rem;
-  /* transform: translateY(31%); */
-  animation: reportGrid 1.5s ease forwards;
+  /* transform: translateY(31%); */ 
+  animation: reportGrid .9s ease forwards;
   border-radius: 1.5rem;
   box-shadow: 1px 1px 3px 2px rgba(14, 19, 35, .7);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
   /* z-index: 9; */
 }
 
 .report__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .info__title {
@@ -174,28 +178,189 @@ body {
 }
 
 .card__grids--work {
-  background: linear-gradient(to bottom, $orange-300-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $orange-300-color 30%,transparent 88%);
 }
 
 .card__grids--play {
-  background: linear-gradient(to bottom, $blue-300-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $blue-300-color 30%,transparent 88%);
 }
 
 .card__grids--study {
-  background: linear-gradient(to bottom, $pink-400-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $pink-400-color 30%,transparent 88%);
 }
 
 .card__grids--exercise {
-  background: linear-gradient(to bottom, $green-400-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $green-400-color 30%,transparent 88%);
 }
 
 .card__grids--social {
-  background: linear-gradient(to bottom, $purple-700-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $purple-700-color 30%,transparent 88%);
 }
 
 .card__grids--selfcare {
-  background: linear-gradient(to bottom, $yellow-300-color 88%,transparent 88%);
+  background: linear-gradient(to bottom, $yellow-300-color 30%,transparent 88%);
 }
+
+@media (min-width:650px) {
+  .layout__mains {
+    width: 61.2rem;
+    height: 66.7rem;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns:  18.8rem 18.8rem 18.8rem;
+    grid-template-rows:  21.3rem 21.3rem 21.3rem;
+    grid-template-areas:  'profile  profile profile'
+                          'work     play    study'
+                          'exercise social  selfcare';
+    gap: 2.4rem;
+  }  
+
+  .layout__user {
+    grid-area: profile;
+    width: 100%;
+    height: 100%;
+  }
+
+  .user__timeframes {
+    justify-content: center;
+    gap: .8rem;
+  }
+
+  .timeframes__item {
+    width: 10.9rem;
+  }
+
+  .card__grids {
+    width: min(18.8rem, 100%);
+    height: 21.3rem;
+
+  }
+  .card__grids--work {
+    grid-area: work;
+  }
+
+  .card__grids--play {
+    grid-area: play;
+  }
+
+  .card__grids--study {
+    grid-area: study;
+  }
+
+  .card__grids--exercise {
+    grid-area: exercise;
+  }
+
+  .card__grids--exercise .images__icons {
+    top: 0;
+  }
+
+  .card__grids--social {
+    grid-area: social;
+  }
+
+  .card__grids--selfcare {
+    grid-area: selfcare;
+  }
+
+  .active {
+    color: $white-color;
+  }
+
+  @keyframes reportGridTablet {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  .grids__report {
+    width: 100%;
+    height: 18rem;
+    animation: reportGridTablet .9s ease forwards;
+  }
+
+  .images__icons {
+    width: min(5.8rem, 90%);
+    top: -3%;
+    right: 7%;
+  }
+  
+  .images__icons:nth-child(4) {
+     top: 0;
+  }
+
+  .report__numbers {
+    flex-direction: column;
+  }
+
+  .numbers__current {
+    font-size: 5.6rem;
+  }
+
+}     
+
+@media (min-width:1200px) {
+  .layout__mains {
+    width: 111.6rem;
+    height: 52rem;
+    align-items: center;
+    grid-template-columns:  repeat(4, 25.5rem);
+    grid-template-rows:  repeat(2, 24.4rem);
+    grid-template-areas:  'profile  work    play  study'
+                          'profile  exercise social selfcare';
+    gap: 3.2rem;
+  }  
+
+  .layout__user {
+    width: 25.5rem;
+  }
+
+  .user__info {
+    width: 25.5rem;
+    height: 35.4rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  .user__timeframes {
+    width: 100%;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 3.2rem 3.2rem 3.2rem; 
+  }
+
+  .timeframes__item {
+    text-align: left;
+  }
+  .card__grids {
+    width: 25.5rem;
+    height: 24.4rem;
+  }
+
+  .grids__report {
+    height: 20.5rem;
+  }
+
+  .user__title {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
