@@ -11,7 +11,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   /*  BORDES DE TODO */
-  /*     outline: 2px solid lime; */
+  /* outline: 2px solid lime;  */
   /* #### FONDO SATURADO #### */
   /* background: hsl(0, 100%, 50% / .1); */
   /*  background: hsl(0, 100%, calc(50% / 10)); */
@@ -139,44 +139,114 @@ body {
 }
 
 .card__grids {
-  width: 100%;
-  max-height: 16rem;
+  position: relative;
+  width: min(32.7rem, 100%);
+  height: 16rem;
   border-radius: 1.5rem;
-  overflow: hidden;
+  border-inline: 2px solid #0e1323;
+  overflow-Y: hidden;
+  box-shadow: 1px 1px 4px 3px rgba(14, 19, 15, 0.9);
+  margin-inline: -1px;
   z-index: 0;
 }
 
-.grids__images {
-  max-width: 7.8rem;
-  z-index: 1;
+.cards__imagen {
+  width: 100%;
+  height: 100%;
 }
 
+.images__icons {
+  width: 7.8rem;
+  position: absolute;
+  top: -5%;
+  right: 5%;
+  /* z-index: -1; */
+}
+
+@keyframes reportGrid {
+  from {
+    transform: translateY(120%);
+  }
+  to {
+    transform: translateY(31%);
+  }
+}
 .grids__report {
+  width: 100%;
+  height: 100%;
+  height: 12.2rem;
   display: grid;
-  grid-template-rows: auto;
+  gap: 0.5rem;
   background-color: #1c204b;
-  border-radius: 1.5rem;
   padding: 2.4rem;
-  /* transform: translateY(-24%); */
-  z-index: 9;
+  transform: translateY(31%);
+  animation: reportGrid 1.5s ease forwards;
+  border-radius: 1.5rem;
+  box-shadow: 1px 1px 3px 2px rgba(14, 19, 35, 0.7);
+  /* z-index: 9; */
 }
 
 .report__header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.info__title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #ffffff;
+}
+
+.grids__icon {
+  border: none;
+  background-color: #1c204b;
 }
 
 .report__numbers {
   display: flex;
   justify-content: space-between;
+  align-content: end;
+}
+
+.numbers__current {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: #ffffff;
+  align-items: flex-end;
+  line-height: 1;
 }
 
 .numbers__previous {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  color: #bbc0ff;
 }
 
 .card__grids--work {
-  background-color: #ff8b64;
+  background: linear-gradient(to bottom, #ff8b64 88%, transparent 88%);
+}
+
+.card__grids--play {
+  background: linear-gradient(to bottom, #55c2e6 88%, transparent 88%);
+}
+
+.card__grids--study {
+  background: linear-gradient(to bottom, #ff5e7d 88%, transparent 88%);
+}
+
+.card__grids--exercise {
+  background: linear-gradient(to bottom, #4bcf82 88%, transparent 88%);
+}
+
+.card__grids--social {
+  background: linear-gradient(to bottom, #7335d2 88%, transparent 88%);
+}
+
+.card__grids--selfcare {
+  background: linear-gradient(to bottom, #f1c75b 88%, transparent 88%);
 }
 
 /*# sourceMappingURL=style.css.map */

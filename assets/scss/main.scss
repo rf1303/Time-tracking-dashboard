@@ -80,43 +80,117 @@ body {
 }
 
 .card__grids {
-  width: 100%;
-  max-height: 16rem;
+  position: relative; 
+  width: min(32.7rem, 100%); 
+  height: 16rem;
   border-radius: 1.5rem;
-  overflow: hidden;
-  z-index: 0;
+  border-inline: 2px solid $navy-950-color;
+  overflow-Y: hidden;
+  box-shadow: 1px 1px 4px 3px rgba(14, 19, 15, .9);
+  margin-inline: -1px;
+  z-index: 0; 
 }
 
-.grids__images {
-  max-width: 7.8rem;
-  z-index: 1;
+.cards__imagen {
+  width: 100%;
+  height: 100%;
+}
+
+.images__icons {
+  width: 7.8rem;
+  position: absolute;
+  top: -5%;
+  right: 5%;
+  /* z-index: -1; */
+}
+
+@keyframes reportGrid {
+  from {
+    transform: translateY(120%);
+  }
+  to {
+    transform: translateY(31%);
+  }
 }
 
 .grids__report {
+  width: 100%;
+  height: 100%;
+  height: 12.2rem;
   display: grid;
-  grid-template-rows: auto;
+  gap: .5rem; 
   background-color: $navy-900-color;
-  border-radius: 1.5rem;
   padding: 2.4rem;
-  /* transform: translateY(-24%); */
-  z-index: 9;
+  transform: translateY(31%); 
+  animation: reportGrid 1.5s ease forwards;
+  border-radius: 1.5rem;
+  box-shadow: 1px 1px 3px 2px rgba(14, 19, 35, .7);
+  /* z-index: 9; */
 }
 
 .report__header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.info__title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: $white-color;
+}
+
+.grids__icon {
+  border: none;
+  background-color: $navy-900-color;
 }
 
 .report__numbers {
   display: flex;
   justify-content: space-between; 
+  align-content: end;
 }
+
+.numbers__current {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: $white-color;
+  align-items: flex-end;
+  line-height: 1;
+}
+
 .numbers__previous {
   display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.5rem;
+  color: $navy-200-color;
 }
+
 .card__grids--work {
-  background-color: $orange-300-color;
+  background: linear-gradient(to bottom, $orange-300-color 88%,transparent 88%);
 }
+
+.card__grids--play {
+  background: linear-gradient(to bottom, $blue-300-color 88%,transparent 88%);
+}
+
+.card__grids--study {
+  background: linear-gradient(to bottom, $pink-400-color 88%,transparent 88%);
+}
+
+.card__grids--exercise {
+  background: linear-gradient(to bottom, $green-400-color 88%,transparent 88%);
+}
+
+.card__grids--social {
+  background: linear-gradient(to bottom, $purple-700-color 88%,transparent 88%);
+}
+
+.card__grids--selfcare {
+  background: linear-gradient(to bottom, $yellow-300-color 88%,transparent 88%);
+}
+
 
 
 
