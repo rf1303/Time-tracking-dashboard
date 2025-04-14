@@ -255,6 +255,12 @@ body {
   background: linear-gradient(to bottom, #f1c75b 30%, transparent 88%);
 }
 
+.timeframes__item--high {
+  color: #ffffff;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
 @media (min-width: 650px) {
   .layout__mains {
     width: 61.2rem;
@@ -303,9 +309,6 @@ body {
   }
   .card__grids--selfcare {
     grid-area: selfcare;
-  }
-  .active {
-    color: #ffffff;
   }
   @keyframes reportGridTablet {
     from {
