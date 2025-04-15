@@ -375,6 +375,10 @@ body {
     font-size: 4rem;
     line-height: 1.2;
   }
+  .images__profile {
+    width: 7.8rem;
+    height: 7.8rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
