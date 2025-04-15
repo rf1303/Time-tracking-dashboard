@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    /* const buttonTimeframes = document.querySelectorAll('.timeframes__item'); */
+
     const cardsGrid = document.querySelectorAll('.card__grids');
     const buttonTimeframes = document.querySelectorAll('.user__timeframes')[0];
     const timeFramesItem = document.querySelectorAll('.timeframes__item');
@@ -46,11 +46,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     break;
             }
 
+              if (framesNumber.current == 103 && window.innerWidth > 650 && window.innerWidth < 1200) {
+                numberCurrent.classList.add('numbers__current--103');
+                } else {
+                  numberCurrent.classList.remove('numbers__current--103');
+                }
+
             numberCurrent.textContent= `${framesNumber.current}hrs`
             numberPrevious.textContent= `${framesNumber.previous}hrs`
-
-            console.log(`${framestitle}: `,  framesName,`: ${framesNumber.current}hrs (Prev: ${framesNumber.previous}hrs)`, `  `, titles);
 
         });
     });
 });
+
+
+
