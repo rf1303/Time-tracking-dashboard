@@ -10,14 +10,24 @@
     // console.log("DATOS : ", datos);
 
 document.addEventListener('DOMContentLoaded', function () {
-    
-    
-    let datos = {};
     /* const buttonTimeframes = document.querySelectorAll('.timeframes__item'); */
+    const cardsGrid = document.querySelectorAll('.card__grids');
     const buttonTimeframes = document.querySelectorAll('.user__timeframes')[0];
     const timeFramesItem = document.querySelectorAll('.timeframes__item');
+    let datos = {};
 
-    buttonTimeframes.addEventListener('click', (e) => {
+    async function cargarDatos() {
+        try {
+        const response = await fetch('../../data.json');
+        datos = await response.json();
+        
+        } catch (error) {
+        console.error("Error cargando datos.json:", error);
+        }
+    }
+    cargarDatos();
+
+    buttonTimeframes.addEventListener('click', async (e) => {
 
         console.log(buttonTimeframes); // boton padre
 
@@ -26,31 +36,39 @@ document.addEventListener('DOMContentLoaded', function () {
             e.target.classList.add('timeframes__item--high');
         }
         
-        const timeFramesName = e.target.dataset.action;
+        const framesName = e.target.dataset.action;
 
-        async function cargarDatos() {
-            try {
-            const response = await fetch('../../data.json');
-            datos = await response.json();
-            console.log("DATOS con await:", datos);
+        datos.forEach((frames, titles) => {
+            const framestitle = cardsGrid[titles];
+            const framesNumber = frames.timeframes[framesName];
+            const numberCurrent = framestitle.querySelector('.numbers__current');
+            const numberPrevious = framestitle.querySelector('.previous__number');
+            const previousTitle = framestitle.querySelector('.previous__title');
 
-            const arrays = datos.filter(frames =>  {
-                return  frames.timeframes[timeFramesName];
-            });
-
-             datos.forEach(frames => {
-                const tf = frames.timeframes[timeFramesName]; // ejemplo: "weekly"
-                 console.log(`${tf.title}: ${tf.current}hrs (Prev: ${tf.previous}hrs)`);
-            });
-            console.log('nombre a cambiar : ', timeFramesName);
-            console.log('El cambio es: ', arrays)
-            console.log('El cambio es: ',timeObj);
-
-            } catch (error) {
-            console.error("Error cargando datos.json:", error);
+            switch (framesName) {
+                case "daily":
+                   previousTitle.textContent = `Yesterday` 
+                    break;
+                case "weekly":
+                   previousTitle.textContent = `Last Week` 
+                    break;
+                case "monthly":
+                   previousTitle.textContent = `Last Mounth` 
+                    break;
+                default:
+                    break;
             }
-        }
-        cargarDatos();
+
+            numberCurrent.textContent= `${framesNumber.current}hrs`
+            numberPrevious.textContent= `${framesNumber.previous}hrs`
+
+            console.log(`${framestitle}: `,  framesName,`: ${framesNumber.current}hrs (Prev: ${framesNumber.previous}hrs)`, `  `, titles);
+
+        });
+
+    // daily = yesterday 
+    // week = last week
+    // monthly = last mounth
 
     });
    
@@ -76,9 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // daily = yesterday 
-    // week = last week
-    // monthly = last mounth
     // buttonTimeframes.forEach(button => {
     //     button.addEventListener('click', (e) => {
     //         /* let highLight =  e.target.dataset.action; */
