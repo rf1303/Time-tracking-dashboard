@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeFramesItem = document.querySelectorAll('.timeframes__item');
     let datos = {};
 
-    async function cargarDatos() {
+    async function loadDatos() {
         try {
         const response = await fetch('../../data.json');
         datos = await response.json();
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error cargando datos.json:", error);
         }
     }
-    cargarDatos();
+    loadDatos();
 
     buttonTimeframes.addEventListener('click', async (e) => {
 
