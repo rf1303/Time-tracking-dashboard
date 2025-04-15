@@ -123,6 +123,13 @@ body {
   animation: reportGrid .9s ease forwards;
   border-radius: 1.5rem;
   box-shadow: 1px 1px 3px 2px rgba(14, 19, 35, .7);
+
+  &:hover {
+    background-color: $navy-800-color;
+  }
+  &:focus {
+    background-color: $navy-800-color;
+  }
 }
 
 .report__header {

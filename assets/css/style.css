@@ -174,6 +174,12 @@ body {
   border-radius: 1.5rem;
   box-shadow: 1px 1px 3px 2px rgba(14, 19, 35, 0.7);
 }
+.grids__report:hover {
+  background-color: #33397a;
+}
+.grids__report:focus {
+  background-color: #33397a;
+}
 
 .report__header {
   display: flex;
