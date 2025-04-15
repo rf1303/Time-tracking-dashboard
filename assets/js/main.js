@@ -1,19 +1,4 @@
-let datos = {};
-async function cargarDatos() {
-    try {
-    const response = await fetch('../../data.json');
-    let datos = await response.json();
-    console.log("DATOS con await:", datos);
-    } catch (error) {
-    console.error("Error cargando datos.json:", error);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    
-    cargarDatos();
-    console.log('Datos des DOM : ', datos);
-    // const fetch = fetch("../../data.json",);
+// const fetch = fetch("../../data.json",);
     // fetch('../../data.json')
     //     .then(response => response.json())
     //     .then(data => {
@@ -24,20 +9,54 @@ document.addEventListener('DOMContentLoaded', function () {
     //     .catch(error => console.error("Error cargando datos.json:", error));
     // console.log("DATOS : ", datos);
 
+document.addEventListener('DOMContentLoaded', function () {
+    
+    
+    let datos = {};
     /* const buttonTimeframes = document.querySelectorAll('.timeframes__item'); */
     const buttonTimeframes = document.querySelectorAll('.user__timeframes')[0];
     const timeFramesItem = document.querySelectorAll('.timeframes__item');
 
     buttonTimeframes.addEventListener('click', (e) => {
-        console.log(buttonTimeframes);
+
+        console.log(buttonTimeframes); // boton padre
+
         if (e.target.tagName === "BUTTON") {
             timeFramesItem.forEach(b => b.classList.remove('timeframes__item--high'));
             e.target.classList.add('timeframes__item--high');
         }
+        
+        const timeFramesName = e.target.dataset.action;
 
+        async function cargarDatos() {
+            try {
+            const response = await fetch('../../data.json');
+            datos = await response.json();
+            console.log("DATOS con await:", datos);
+
+            const arrays = datos.filter(frames =>  {
+                return  frames.timeframes[timeFramesName];
+            });
+
+             datos.forEach(frames => {
+                const tf = frames.timeframes[timeFramesName]; // ejemplo: "weekly"
+                 console.log(`${tf.title}: ${tf.current}hrs (Prev: ${tf.previous}hrs)`);
+            });
+            console.log('nombre a cambiar : ', timeFramesName);
+            console.log('El cambio es: ', arrays)
+            console.log('El cambio es: ',timeObj);
+
+            } catch (error) {
+            console.error("Error cargando datos.json:", error);
+            }
+        }
+        cargarDatos();
 
     });
+   
 
+    // function newTimeFrames(timeName) {
+    // }
 
 //
 // console.log(fetchPromise);
