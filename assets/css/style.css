@@ -332,7 +332,8 @@ body {
     flex-direction: column;
   }
   .numbers__current {
-    font-size: 5.6rem;
+    /* font-size: $text-1; */
+    font-size: clamp(5.2rem, 2vw + 4.4rem, 5.6rem);
   }
   .numbers__current--103 {
     font-size: 5.2rem;
